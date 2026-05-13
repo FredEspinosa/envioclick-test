@@ -1,0 +1,159 @@
+:root {
+    --color-background-negro: #000000;
+    --color-background-blanco: #ffffff;
+    /* Colores menta */
+    --color-secundario-menta-01: #64D6C8;
+    --color-secundario-menta-02: #3DCCBA;
+    --color-secundario-menta-03: #31A596;
+    --color-secundario-menta-04: #257E72;
+    --color-secundario-menta-05: #1A564F;
+    /* Colores de alertas */
+    --color-alerta-verde: #007D00;
+    --color-alerta-naranja: #FF9E00;
+    --color-alerta-rojo: #CF0000;
+    /* Colores Descubre */
+    --color-titulo-pagina: #1F2024;
+    --color-background-calendar-icon: #882DE7;
+    --color-background-bell-icon: #164A99;
+    --color-tab-details: #71727A;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #222;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+button {
+    cursor: pointer;
+}
+
+.container {
+    width: 100%;
+    max-width: 1320px;
+    margin: auto;
+}
+
+.padding-15-l-r {
+    padding: 0px 15px;
+}
+
+.grid {
+    display: grid;
+    grid-template-rows: 10vh 80vh 10vh;
+    grid-template-columns: 1fr;
+    padding: 0px 15px;
+}
+
+.text-title {
+    font-size: 30px;
+    letter-spacing: 0px;
+    line-height: 1.1;
+    text-shadow: 0 0 10px #0006;
+    color: #222;
+    text-align: center;
+}
+
+.text-error {
+    color: var(--color-alerta-rojo);
+}
+
+.title-form {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrap-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.input-form {
+    width: 100%;
+    max-width: 400px;
+    height: 45px;
+    padding: 8px 56px 8px 26px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+}
+
+.input-form:focus {
+    border-color: var(--color-secundario-menta-01);
+    box-shadow: 0 0 5px var(--color-secundario-menta-05) !important;
+    outline: none;
+    background-color: var(--color-background-blanco);
+    border: 1px solid var(--color-secundario-menta-05);
+}
+
+.form-btn-container {
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.form-button {
+    width: 100%;
+    max-width: 400px;
+    background-color: var(--color-secundario-menta-03);
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: var(--color-background-blanco);
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 45px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.form-button:hover,
+.form-button:focus {
+    background-color: var(--color-secundario-menta-01);
+}
+
+.form-background {
+    background: #f5f5f5;
+    background: linear-gradient(128deg, rgba(245, 245, 245, 1) 38%, rgba(208, 245, 219, 1) 80%, rgba(193, 230, 206, 1) 100%);
+}
+
+/* phones */
+@media (min-width: 576px) {}
+
+/* tablets */
+@media (min-width: 768px) {}
+
+/* desktops */
+@media (min-width: 992px) {}
+
+/* large desktops */
+@media (min-width: 1200px) {}
+
+/* larger desktops */
+@media (min-width: 1400px) {}
