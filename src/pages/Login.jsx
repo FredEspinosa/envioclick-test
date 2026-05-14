@@ -45,9 +45,9 @@ const Login = () => {
 
 
   return (
-    <div className='form-background'>
+    <div className='background-gradient'>
         <div className='container'>
-            <div className='grid form-background'>
+            <div className='grid'>
                 <Header 
                     isOptLef={false}
                     isText={false}
@@ -58,7 +58,7 @@ const Login = () => {
                         <h1 className='title-form text-title'>Acceder a tu cuenta</h1>
                         <div className='wrap-grid'>
                             <div>
-                                <FaChalkboardUser size={100} />
+                                <FaChalkboardUser size={100} color='#164a99' />
                             </div>
                             <div className='login-inputs-container '>
                                 <input

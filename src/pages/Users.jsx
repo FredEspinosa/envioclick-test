@@ -12,6 +12,10 @@ import UserTable from '../components/UserTable';
 
 // ICONS
 import { FaRegUser } from "react-icons/fa";
+import { MdFileDownload } from 'react-icons/md';
+import Header from '../components/Header';
+import Loader from '../components/Loader';
+import { TbBrandSpeedtest } from 'react-icons/tb';
 
 
 const Users = () => {
@@ -26,8 +30,8 @@ const Users = () => {
     const [showModal, setShowModal] = useState(false);
     const [selectedUserId, setSelectedUserId] = useState(null);
 
-    const headerText = <h1 className='text-title'>Users <FaRegUser /></h1>
-    const footerText = <p className='text-title'>Envioclick Test</p>
+    const headerText = <h1 className='text-title'>Lista de usuarios <FaRegUser size={25} /></h1>
+    const footerText = <p className='text-title text-special-white footer-text-disclaimer'>Envioclick Test <TbBrandSpeedtest size={15}/></p>
 
     useEffect(() => {
         loadUsers();
@@ -110,36 +114,48 @@ const Users = () => {
 
 
     return (
-        <div className='form-background'>
+        <div className='background-gradient'>
             <div className='container'>
-                <div className='grid form-background'>
-                    <Footer
-                        isOptLef={true}
-                        optionLeft={headerText}
-                        isText={false}
-                        isOptRig={false}
-                    />
-                    <div className='scroll-y'>
-                        <div className='user-filters'>
-                            <Filters
-                                gender={gender}
-                                setGender={setGender}
-                                nationality={nationality}
-                                setNationality={setNationality}
-                                age={age}
-                                setAge={setAge}
-                            />
-
-                            <div className='form-btn-container no-margin'>
-                                <button className='form-button' onClick={() => {exportUserCSV(filteredUsers)}}>Descargar</button>
-                            </div>
-                        </div>
-
-                        <UserTable
-                            users={filteredUsers}
-                            onDelete={handleOpenModal}
+                {loading ?
+                    <Loader />
+                    :
+                    <div className='grid'>
+                        <Header
+                            isOptLef={true}
+                            optionLeft={headerText}
+                            isText={false}
+                            isOptRig={false}
                         />
-                        {/* <div className='user-card-container'>
+                        <div className='scroll-y'>
+                            <div className='title-filters-container'>
+                                <h4>Filtros</h4>
+                            </div>
+                            <div className='user-filters'>
+                                <Filters
+                                    gender={gender}
+                                    setGender={setGender}
+                                    nationality={nationality}
+                                    setNationality={setNationality}
+                                    age={age}
+                                    setAge={setAge}
+                                />
+
+                                <div className='form-btn-container no-margin'>
+                                    <button
+                                        className='form-button buton-icon'
+                                        onClick={() => { exportUserCSV(filteredUsers) }}
+                                    >
+                                        <MdFileDownload style={{ marginRight: "5px" }} />
+                                        Descargar CSV
+                                    </button>
+                                </div>
+                            </div>
+
+                            <UserTable
+                                users={filteredUsers}
+                                onDelete={handleOpenModal}
+                            />
+                            {/* <div className='user-card-container'>
                             {
                                 filteredUsers.map((user) => (
                                     <UserCard
@@ -150,21 +166,22 @@ const Users = () => {
                                 ))
                             }
                         </div> */}
+                        </div>
+                        <Footer
+                            isOptLef={false}
+                            isText={false}
+                            isOptRig={true}
+                            optionRight={footerText}
+                        />
                     </div>
-                    <Footer
-                        isOptLef={false}
-                        isText={true}
-                        text={footerText}
-                        isOptRig={false}
-                    />
-                </div>
+                }
                 {
                     showModal && (
-                        <Modal 
+                        <Modal
                             title="Borrar Usuario"
                             message="¿Estás seguro de borrar este usuario?"
                             onConfirm={handleDeleteUser}
-                            onCancel={()=> {setShowModal(false)}}
+                            onCancel={() => { setShowModal(false) }}
                         />
                     )
                 }

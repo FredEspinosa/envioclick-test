@@ -62,7 +62,7 @@ button {
 }
 
 .text-title {
-    font-size: 30px;
+    font-size: 25px;
     letter-spacing: 0px;
     line-height: 1.1;
     text-shadow: 0 0 10px #0006;
@@ -72,6 +72,11 @@ button {
 
 .text-error {
     color: var(--color-alerta-rojo);
+}
+
+.text-special-white {
+    text-shadow: 0 0 10px rgb(32 36 91 / 86%);
+    color: var(--color-background-blanco);
 }
 
 .align-left {
@@ -102,7 +107,7 @@ button {
 
 .align-right {
     display: flex;
-    align-items: right;
+    align-items: center;
     justify-content: right;
     width: 100%;
 }
@@ -161,11 +166,11 @@ button {
 }
 
 .input-form:focus {
-    border-color: var(--color-secundario-menta-01);
-    box-shadow: 0 0 5px var(--color-secundario-menta-05) !important;
+    border-color: var(--color-background-bell-icon);
+    box-shadow: 0 0 5px var(--color-background-calendar-icon) !important;
     outline: none;
     background-color: var(--color-background-blanco);
-    border: 1px solid var(--color-secundario-menta-05);
+    border: 1px solid var(--color-background-calendar-icon);
 }
 
 .form-btn-container {
@@ -176,7 +181,7 @@ button {
 .form-button {
     width: 100%;
     max-width: 400px;
-    background-color: var(--color-secundario-menta-03);
+    background-color: var(--color-background-bell-icon);
     border-radius: 8px;
     border-style: none;
     box-sizing: border-box;
@@ -204,7 +209,7 @@ button {
 
 .form-button:hover,
 .form-button:focus {
-    background-color: var(--color-secundario-menta-01);
+    background-color: var(--color-background-calendar-icon);
 }
 
 .form-background {
@@ -212,8 +217,7 @@ button {
 }
 
 .background-gradient {
-    background: #f5f5f5;
-    background: linear-gradient(128deg, rgba(245, 245, 245, 1) 38%, rgba(208, 245, 219, 1) 80%, rgba(193, 230, 206, 1) 100%);
+    background: linear-gradient(128deg, rgb(227 227 227) 38%, rgb(32 36 91 / 86%) 80%, rgb(211 229 217) 100%);
 }
 
 /* CARDS STYLES */
@@ -272,6 +276,8 @@ button {
 }
 
 .back-button {
+    display: flex;
+    align-items: center;
     margin-bottom: 1rem;
     border: none;
     background: var(--color-background-negro);
@@ -324,12 +330,30 @@ button {
     border: 1px solid #ccc;
 }
 
+.buton-icon {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+}
+
+.title-filters-container {
+    display: flex;
+    width: 100%;
+    text-align: start;
+    margin-bottom: 15px;
+}
+
 /* Footer & Header */
 
 .test-footer,
 .test-header {
     display: flex;
     width: 100%;
+}
+
+.footer-text-disclaimer {
+    font-size: 15px;
 }
 
 /* Modal styles */
@@ -415,6 +439,11 @@ button {
     display: block;
     margin-top: 10px;
     color: gray;
+}
+
+.message-grid {
+    display: grid;
+    gap: 5px;
 }
 
 /* Styles User Table */
@@ -517,11 +546,39 @@ button {
     color: white;
 }
 
+/* Loader styles */
+
+.loader {
+    width: 90px;
+    padding: 12px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--color-background-bell-icon);
+    --_m:
+        conic-gradient(#0000 10%, #000),
+        linear-gradient(#000 0 0) content-box;
+    -webkit-mask: var(--_m);
+    mask: var(--_m);
+    -webkit-mask-composite: source-out;
+    mask-composite: subtract;
+    animation: l3 1s infinite linear;
+}
+
+@keyframes l3 {
+    to {
+        transform: rotate(1turn)
+    }
+}
+
 /* phones */
 @media (min-width: 576px) {}
 
 /* tablets */
 @media (min-width: 768px) {
+
+    .text-title {
+        font-size: 30px;
+    }
 
     .users-container {
         grid-template-columns: repeat(2, 1fr);
@@ -560,7 +617,7 @@ button {
 
 /* large desktops */
 @media (min-width: 1200px) {
-    .users-container { 
+    .users-container {
         grid-template-columns: repeat(3, 1fr);
     }
 }
