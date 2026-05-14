@@ -18,6 +18,8 @@
     --color-tab-details: #71727A;
 }
 
+/* Globals Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -29,6 +31,12 @@ body {
     background: #f4f4f4;
     color: #222;
     font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    letter-spacing: 0px;
+    line-height: 1.1;
+    text-shadow: 0 0 10px #0006;
+    color: var(--color-background-negro);
+    text-align: center;
 }
 
 button {
@@ -39,9 +47,6 @@ button {
     width: 100%;
     max-width: 1320px;
     margin: auto;
-}
-
-.padding-15-l-r {
     padding: 0px 15px;
 }
 
@@ -49,7 +54,6 @@ button {
     display: grid;
     grid-template-rows: 10vh 80vh 10vh;
     grid-template-columns: 1fr;
-    padding: 0px 15px;
 }
 
 .text-title {
@@ -57,13 +61,41 @@ button {
     letter-spacing: 0px;
     line-height: 1.1;
     text-shadow: 0 0 10px #0006;
-    color: #222;
+    color: var(--color-background-negro);
     text-align: center;
 }
 
 .text-error {
     color: var(--color-alerta-rojo);
 }
+
+.align-left {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+}
+
+.align-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.align-right {
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    width: 100%;
+}
+
+.scroll-y {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/* LOGIN STYLES */
 
 .title-form {
     display: flex;
@@ -143,17 +175,236 @@ button {
     background: linear-gradient(128deg, rgba(245, 245, 245, 1) 38%, rgba(208, 245, 219, 1) 80%, rgba(193, 230, 206, 1) 100%);
 }
 
+/* CARDS STYLES */
+
+.user-card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.users-container {
+    padding: 1rem;
+    display: grid;
+    gap: 1rem;
+}
+
+.user-card {
+    background: transparent;
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.user-card button {
+    border: none;
+    background: var(--color-background-negro);
+    color: var(--color-background-blanco);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.user-card-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    gap: 15px;
+}
+
+/* Styles User detail */
+
+.detail-container {
+    padding: 1rem;
+}
+
+.back-button {
+    margin-bottom: 1rem;
+    border: none;
+    background: var(--color-background-negro);
+    color: var(--color-background-blanco);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.detail-card {
+    background: var(--color-background-blanco);
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.detail-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+/* Styles Filtered */
+
+.filters-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.filters-container input,
+.filters-container select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Footer & Header */
+
+.test-footer,
+.test-header {
+    display: flex;
+    width: 100%;
+}
+
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.modal-buttons button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: #222;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Styles Box Message */
+.message-section {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.message-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.message-form textarea {
+    min-height: 100px;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    resize: none;
+}
+
+.message-form button {
+    border: none;
+    background: #222;
+    color: white;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+.messages-list {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.message-card {
+    background: #f4f4f4;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.message-card small {
+    display: block;
+    margin-top: 10px;
+    color: gray;
+}
+
 /* phones */
 @media (min-width: 576px) {}
 
 /* tablets */
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+
+    .users-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .detail-card {
+        max-width: 500px;
+        margin: auto;
+    }
+
+    .filters-container {
+        flex-direction: row;
+    }
+
+    .user-card {
+        max-width: 300px;
+    }
+
+    .user-card-btn-container {
+        justify-content: center;
+        gap: 15px;
+    }
+}
 
 /* desktops */
 @media (min-width: 992px) {}
 
 /* large desktops */
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+    .users-container {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+}
 
 /* larger desktops */
 @media (min-width: 1400px) {}

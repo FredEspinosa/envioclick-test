@@ -39,7 +39,7 @@ const Login = () => {
 
 
   return (
-    <>
+    <div className='container'>
         <div className='grid form-background'>
             <h1 className='title-form text-title'>Acceder a tu cuenta</h1>
             <form action="" onSubmit={handleSubmit}>
@@ -67,7 +67,7 @@ const Login = () => {
                 {errorMessage}
             </form>
         </div>
-    </>
+    </div>
   )
 }
 
