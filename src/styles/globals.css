@@ -56,6 +56,11 @@ button {
     grid-template-columns: 1fr;
 }
 
+.grid-gap-20 {
+    display: grid;
+    gap: 20px;
+}
+
 .text-title {
     font-size: 30px;
     letter-spacing: 0px;
@@ -74,6 +79,18 @@ button {
     align-items: center;
     justify-content: left;
     width: 100%;
+}
+
+.no-margin {
+    margin: 0px 0px !important;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.align-items-center {
+    align-items: center;
 }
 
 .align-center {
@@ -96,6 +113,18 @@ button {
 }
 
 /* LOGIN STYLES */
+
+.login-cont-form {
+    margin: 0px auto;
+    background: var(--color-background-blanco);
+    border-radius: 20px;
+    padding: 10px;
+    height: auto;
+    max-height: 500px;
+    box-shadow: 10px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+}
 
 .title-form {
     display: flex;
@@ -121,6 +150,14 @@ button {
     font-weight: 400;
     line-height: 24px;
     text-align: left;
+}
+
+.login-inputs-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .input-form:focus {
@@ -171,6 +208,10 @@ button {
 }
 
 .form-background {
+    background: #2a9b83;
+}
+
+.background-gradient {
     background: #f5f5f5;
     background: linear-gradient(128deg, rgba(245, 245, 245, 1) 38%, rgba(208, 245, 219, 1) 80%, rgba(193, 230, 206, 1) 100%);
 }
@@ -259,11 +300,21 @@ button {
 
 /* Styles Filtered */
 
+.user-filters {
+    display: grid;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 20px;
+}
+
+.user-filters button {
+    height: auto !important;
+}
+
 .filters-container {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    margin-bottom: 1rem;
 }
 
 .filters-container input,
@@ -366,6 +417,106 @@ button {
     color: gray;
 }
 
+/* Styles User Table */
+.users-table-container {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 70vh;
+    border-radius: 16px;
+    box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+.users-table {
+    width: 100%;
+    min-width: 800px;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.users-table thead th {
+    position: sticky;
+    top: 0;
+    background: var(--color-background-negro);
+    color: var(--color-background-blanco);
+    z-index: 2;
+    padding: 1rem;
+    text-align: left;
+}
+
+.users-table th:first-child {
+    border-top-left-radius: 16px;
+}
+
+.users-table th:last-child {
+    border-top-right-radius: 16px;
+}
+
+.users-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    background: white;
+}
+
+.users-table tbody tr:hover {
+    background: #f8f8f8;
+}
+
+.users-table tbody tr:hover td {
+    background: #f8f8f8;
+}
+
+.users-table img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.table-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.table-actions button {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: var(--color-background-negro);
+    color: var(--color-background-blanco);
+}
+
+.users-table th,
+.users-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.users-table th {
+    background: #222;
+    color: white;
+}
+
+.users-table img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.table-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.table-actions button {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    background: #222;
+    color: white;
+}
+
 /* phones */
 @media (min-width: 576px) {}
 
@@ -393,6 +544,15 @@ button {
         justify-content: center;
         gap: 15px;
     }
+
+    .login-cont-form {
+        width: 40%;
+    }
+
+    .user-filters {
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
 /* desktops */
@@ -400,9 +560,8 @@ button {
 
 /* large desktops */
 @media (min-width: 1200px) {
-    .users-container {
-        grid-template-columns:
-            repeat(3, 1fr);
+    .users-container { 
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 

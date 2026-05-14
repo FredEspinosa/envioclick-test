@@ -8,6 +8,11 @@ import Filters from '../components/Filters';
 import Footer from '../components/Footer';
 import Modal from '../components/Modal';
 import { exportUserCSV } from '../services/csvService';
+import UserTable from '../components/UserTable';
+
+// ICONS
+import { FaRegUser } from "react-icons/fa";
+
 
 const Users = () => {
 
@@ -21,7 +26,7 @@ const Users = () => {
     const [showModal, setShowModal] = useState(false);
     const [selectedUserId, setSelectedUserId] = useState(null);
 
-    const headerText = <h1 className='text-title'>Users</h1>
+    const headerText = <h1 className='text-title'>Users <FaRegUser /></h1>
     const footerText = <p className='text-title'>Envioclick Test</p>
 
     useEffect(() => {
@@ -72,7 +77,7 @@ const Users = () => {
         if (nationality) {
             filtered = filtered.filter(
                 (user) =>
-                    user.location.country.toLowerCase().includes(nationality.toLocaleLowerCase)
+                    user.location.country.toLowerCase().includes(nationality.toLowerCase())
             )
         }
 
@@ -105,55 +110,65 @@ const Users = () => {
 
 
     return (
-        <div className='container'>
-            <div className='grid form-background'>
-                <Footer
-                    isOptLef={true}
-                    optionLeft={headerText}
-                    isText={false}
-                    isOptRig={false}
-                />
-                <div className='scroll-y '>
-                    <div className='form-btn-container'>
-                        <button className='form-button' onClick={() => {exportUserCSV(filteredUsers)}}>Entrar</button>
-                    </div>
-                    <Filters
-                        gender={gender}
-                        setGender={setGender}
-                        nationality={nationality}
-                        setNationality={setNationality}
-                        age={age}
-                        setAge={setAge}
+        <div className='form-background'>
+            <div className='container'>
+                <div className='grid form-background'>
+                    <Footer
+                        isOptLef={true}
+                        optionLeft={headerText}
+                        isText={false}
+                        isOptRig={false}
                     />
-                    <div className='user-card-container'>
-                        {
-                            filteredUsers.map((user) => (
-                                <UserCard
-                                    key={user.login.uuid}
-                                    user={user}
-                                    onDelete={handleOpenModal}
-                                />
-                            ))
-                        }
+                    <div className='scroll-y'>
+                        <div className='user-filters'>
+                            <Filters
+                                gender={gender}
+                                setGender={setGender}
+                                nationality={nationality}
+                                setNationality={setNationality}
+                                age={age}
+                                setAge={setAge}
+                            />
+
+                            <div className='form-btn-container no-margin'>
+                                <button className='form-button' onClick={() => {exportUserCSV(filteredUsers)}}>Descargar</button>
+                            </div>
+                        </div>
+
+                        <UserTable
+                            users={filteredUsers}
+                            onDelete={handleOpenModal}
+                        />
+                        {/* <div className='user-card-container'>
+                            {
+                                filteredUsers.map((user) => (
+                                    <UserCard
+                                        key={user.login.uuid}
+                                        user={user}
+                                        onDelete={handleOpenModal}
+                                    />
+                                ))
+                            }
+                        </div> */}
                     </div>
+                    <Footer
+                        isOptLef={false}
+                        isText={true}
+                        text={footerText}
+                        isOptRig={false}
+                    />
                 </div>
-                <Footer
-                    isOptLef={false}
-                    isText={true}
-                    text={footerText}
-                    isOptRig={false}
-                />
+                {
+                    showModal && (
+                        <Modal 
+                            title="Borrar Usuario"
+                            message="¿Estás seguro de borrar este usuario?"
+                            onConfirm={handleDeleteUser}
+                            onCancel={()=> {setShowModal(false)}}
+                        />
+                    )
+                }
             </div>
-            {
-                showModal && (
-                    <Modal 
-                        title="Borrar Usuario"
-                        message="¿Estás seguro de borrar este usuario?"
-                        onConfirm={handleDeleteUser}
-                        onCancel={()=> {setShowModal(false)}}
-                    />
-                )
-            }
         </div>
     )
 }

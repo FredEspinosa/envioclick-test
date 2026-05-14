@@ -3,6 +3,12 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { login } from '../services/authService';
 
+// IMAGES
+import LoginImage from '../assets/images/login-image.png'
+import { FaChalkboardUser } from 'react-icons/fa6';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
 const Login = () => {
     const navigate = useNavigate();
 
@@ -39,33 +45,53 @@ const Login = () => {
 
 
   return (
-    <div className='container'>
-        <div className='grid form-background'>
-            <h1 className='title-form text-title'>Acceder a tu cuenta</h1>
-            <form action="" onSubmit={handleSubmit}>
-                <div className='wrap-grid'>
-                    <input
-                        className='input-form' 
-                        type="text" 
-                        name="username"
-                        placeholder="Nombre de usuario"
-                        value={form.username}
-                        onChange={handleChange}
-                    />
-                    <input 
-                        className='input-form'
-                        type="password" 
-                        name="password"
-                        placeholder='contraseña'
-                        value={form.password}
-                        onChange={handleChange}
-                    />
+    <div className='form-background'>
+        <div className='container'>
+            <div className='grid form-background'>
+                <Header 
+                    isOptLef={false}
+                    isText={false}
+                    isOptRig={false}
+                />
+                <div className='login-cont-form'>
+                    <form action="" onSubmit={handleSubmit}>
+                        <h1 className='title-form text-title'>Acceder a tu cuenta</h1>
+                        <div className='wrap-grid'>
+                            <div>
+                                <FaChalkboardUser size={100} />
+                            </div>
+                            <div className='login-inputs-container '>
+                                <input
+                                    className='input-form' 
+                                    type="text" 
+                                    name="username"
+                                    placeholder="Nombre de usuario"
+                                    value={form.username}
+                                    onChange={handleChange}
+                                />
+                                <input 
+                                    className='input-form'
+                                    type="password" 
+                                    name="password"
+                                    placeholder='contraseña'
+                                    value={form.password}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                        </div>
+                        <div className='form-btn-container'>
+                            <button className='form-button' type="submit">Acceder</button>
+                        </div>
+                        {errorMessage}
+                    </form>
+
                 </div>
-                <div className='form-btn-container'>
-                    <button className='form-button' type="submit">Entrar</button>
-                </div>
-                {errorMessage}
-            </form>
+                <Footer 
+                    isOptLef={false}
+                    isText={false}
+                    isOptRig={false}
+                />
+            </div>
         </div>
     </div>
   )

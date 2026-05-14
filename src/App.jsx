@@ -6,7 +6,7 @@ import "./styles/globals.css"
 function App() {
 
   return (
-    <div className='form-background'>
+    <div>
       <AppRouter />
     </div>
   )

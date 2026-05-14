@@ -9,37 +9,40 @@ const Filters = ({
     setAge
 }) => {
   return (
-    <div>
-        <div className='filters-container'>
+    <>
+        <div className='filters-container display-flex'>
             <select 
+                name='gender'
                 value={gender} 
                 onChange={(e)=> setGender(e.target.value)}
             >
-                <option value="">
-                    All genders
+                <option name="all" value="">
+                    Todo
                 </option>
-                <option value="male">
+                <option name="male" value="male">
                     Hombre
                 </option>
-                <option value="female">
+                <option name="female" value="female">
                     Mujer
                 </option>
             </select>
 
             <input 
+                name='nationality'
                 type="text" 
                 placeholder="Nacionalidad"
                 value={nationality}
                 onChange={(e) => setNationality(e.target.value)}
             />
             <input 
+                name='age'
                 type="number" 
                 placeholder="Edad minima"
                 value={age}
                 onChange={(e) => setAge(e.target.value)}
             />
         </div>
-    </div>
+    </>
   )
 }
 

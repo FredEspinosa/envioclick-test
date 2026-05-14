@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 const Header = ({isOptLef, optionLeft, isText, text, isOptRig, optionRight}) => {
   return (
@@ -15,15 +14,6 @@ const Header = ({isOptLef, optionLeft, isText, text, isOptRig, optionRight}) => 
         }
     </div>
   )
-}
-
-Header.propTypes = {
-    isOptLef: PropTypes.bool,
-    optionLeft: PropTypes.string,
-    isText: PropTypes.bool,
-    text: PropTypes.string,
-    isOptRig: PropTypes.bool,
-    optionRight: PropTypes.string,
 }
 
 export default Header
