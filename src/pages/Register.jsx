@@ -33,11 +33,8 @@ function Register() {
         setShowModal(true);
 
         setTimeout(() => {
-
             navigate("/");
-
             setShowModal(false);
-
         }, 2000);
 
     };
@@ -94,6 +91,7 @@ function Register() {
                                 </div>
                                 <div className='login-btn-container'>
                                     <button className='form-button' type="submit">Registrarse</button>
+                                    <a className='login-forget-pass' onClick={() => {navigate("/")}} >Regresar</a>
                                 </div>
                             </div>
                         </form>
