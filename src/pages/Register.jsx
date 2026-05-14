@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Modal from "../components/Modal";
-import { FaUser } from "react-icons/fa";
+import { FaAddressBook, FaUser } from "react-icons/fa";
 
 function Register() {
 
@@ -56,43 +56,46 @@ function Register() {
                             className="register-form"
                             onSubmit={handleSubmit}
                         >
-                            <h1> Registro</h1>
-                            <div className='login-inputs-container '>
-                                <input
-                                    className='input-form'
-                                    type="text"
-                                    name="name"
-                                    placeholder="Nombre"
-                                    value={form.name}
-                                    onChange={handleChange}
-                                    required
-                                />
+                            <h1 className='title-form text-title'>Crea una cuenta</h1>
+                            <div className='wrap-grid'>
+                                <div>
+                                    <FaAddressBook size={100} color='#164a99' />
+                                </div>
+                                <div className='login-inputs-container '>
+                                    <input
+                                        className='input-form'
+                                        type="text"
+                                        name="name"
+                                        placeholder="Nombre"
+                                        value={form.name}
+                                        onChange={handleChange}
+                                        required
+                                    />
 
-                                <input
-                                    className='input-form'
-                                    type="email"
-                                    name="email"
-                                    placeholder="Correo"
-                                    value={form.email}
-                                    onChange={handleChange}
-                                    required
-                                />
+                                    <input
+                                        className='input-form'
+                                        type="email"
+                                        name="email"
+                                        placeholder="Correo"
+                                        value={form.email}
+                                        onChange={handleChange}
+                                        required
+                                    />
 
-                                <input
-                                    className='input-form'
-                                    type="password"
-                                    name="password"
-                                    placeholder="Contraseña"
-                                    value={form.password}
-                                    onChange={handleChange}
-                                    required
-                                />
+                                    <input
+                                        className='input-form'
+                                        type="password"
+                                        name="password"
+                                        placeholder="Contraseña"
+                                        value={form.password}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+                                <div className='login-btn-container'>
+                                    <button className='form-button' type="submit">Registrarse</button>
+                                </div>
                             </div>
-                            <div className='login-btn-container'>
-                                <button className='form-button' type="submit">Registrarse</button>
-                            </div>
-
-
                         </form>
 
                     </div>

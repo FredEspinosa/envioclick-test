@@ -43,7 +43,7 @@ const Login = () => {
             navigate("/users");
             return;
         }
-
+        // Validaciones simples
         if ( form.email !== savedUser?.email && form.email !== "admin" ) {
             setErrorMessage(
                 <p className='text-error'>
