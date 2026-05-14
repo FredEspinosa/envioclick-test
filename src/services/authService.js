@@ -6,6 +6,7 @@ export const login = () => {
 export const logout = () => {
     // Función para eliminar/cerrar sesion de usuario
     localStorage.removeItem("isAuth");
+    localStorage.clear()
 }
 
 export const isAuthenticated = () => {

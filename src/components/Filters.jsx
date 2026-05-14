@@ -36,6 +36,7 @@ const Filters = ({
             />
             <input 
                 name='age'
+                min="0"
                 type="number" 
                 placeholder="Edad minima"
                 value={age}

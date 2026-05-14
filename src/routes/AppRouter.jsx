@@ -3,6 +3,7 @@ import Login from '../pages/Login'
 import Users from '../pages/Users'
 import UserDetail from '../pages/UserDetail'
 import ProtectedRoute from './ProtectedRoute'
+import Register from '../pages/Register'
 
 const AppRouter = () => {
     /*  Importando el react router dom, vamos a determinar las rutas que necesitamos para navegar dentro de la aplicación
@@ -12,6 +13,7 @@ const AppRouter = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Login />} />
+                <Route path="/register" element={<Register />} />
                 <Route 
                     path="/users" 
                     element={

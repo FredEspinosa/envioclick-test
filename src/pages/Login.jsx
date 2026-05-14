@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { login } from '../services/authService';
 
 // IMAGES
-import LoginImage from '../assets/images/login-image.png'
 import { FaChalkboardUser } from 'react-icons/fa6';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -13,7 +12,7 @@ const Login = () => {
     const navigate = useNavigate();
 
     const [form, setForm] = useState({  // Asignamos valores iniciales en un objeto
-        username:"",
+        email:"",
         password:"",
     })
 
@@ -28,19 +27,52 @@ const Login = () => {
     }
 
     const handleSubmit = (e) => {
-        // Función para enviar la información
         e.preventDefault();
-        if (form.username === "admin" && form.password === "1234") {
-            login()
-            navigate("/users")
-        } else if (form.username !== "admin") {
-            setErrorMessage(<p className='text-error'>Nombre de usuario incorrecto</p>)
-        } else if (form.password !== "1234") {
-            setErrorMessage(<p className='text-error'>Contraseña incorrecta</p>)
+        const savedUser = JSON.parse(localStorage.getItem( "registeredUser" ));
+        // Existe usuario registrado
+        if (savedUser) {
+            if ( form.email === savedUser.email && form.password === savedUser.password ) {
+                login();
+                navigate("/users");
+                return;
+            }
         }
-        else {
-            setErrorMessage(<p className='text-error'>Error de credenciales</p>)
+        // Login con admin basico
+        if ( form.email === "admin" && form.password === "1234" ) {
+            login();
+            navigate("/users");
+            return;
         }
+
+        if ( form.email !== savedUser?.email && form.email !== "admin" ) {
+            setErrorMessage(
+                <p className='text-error'>
+                    Usuario incorrecto
+                </p>
+            );
+            return;
+        }
+
+        if ( form.password !== savedUser?.password && form.password !== "1234" ) {
+            setErrorMessage(
+                <p className='text-error'>
+                    Contraseña incorrecta
+                </p>
+            );
+            return;
+        }
+
+        setErrorMessage(
+            <p className='text-error'>
+                Error de credenciales
+            </p>
+        );
+
+    }
+
+    const handleNavigate = () => {
+        console.log("No existe tal página");
+        navigate("/register")
     }
 
 
@@ -64,9 +96,9 @@ const Login = () => {
                                 <input
                                     className='input-form' 
                                     type="text" 
-                                    name="username"
-                                    placeholder="Nombre de usuario"
-                                    value={form.username}
+                                    name="email"
+                                    placeholder="Correo electrónico"
+                                    value={form.email}
                                     onChange={handleChange}
                                 />
                                 <input 
@@ -79,8 +111,10 @@ const Login = () => {
                                 />
                             </div>
                         </div>
-                        <div className='form-btn-container'>
+                        <div className='login-btn-container'>
                             <button className='form-button' type="submit">Acceder</button>
+                            <a className='login-forget-pass' onClick={handleNavigate} disabled >Regístrate</a>
+                            <a className='login-forget-pass' onClick={handleNavigate} disabled >Olvidé mi contraseña</a>
                         </div>
                         {errorMessage}
                     </form>

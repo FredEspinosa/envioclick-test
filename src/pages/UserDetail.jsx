@@ -17,6 +17,7 @@ const UserDetail = () => {
   const users = getUsersCache();
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
+  const [boxMessages, setBoxMessages] = useState(false)
 
   const headerText = <h1 className='text-title'>Detalles de usuario <FaRegUser size={20} /></h1>
   const footerText = <p className='text-title text-special-white footer-text-disclaimer'>Envioclick Test <TbBrandSpeedtest size={15} /></p>
@@ -53,7 +54,7 @@ const UserDetail = () => {
             isText={false}
             isOptRig={false}
           />
-          <div className='scroll-y'>
+          <div className='users-layout'>
             <div className="detail-container">
               <button
                 className="back-button"
@@ -62,69 +63,90 @@ const UserDetail = () => {
                 <TiArrowBackOutline size={15} style={{ marginRight: "5px" }} />
                 Regresar
               </button>
-
-              <div className="detail-card">
-                <img
-                  src={user.picture.large}
-                  alt={user.name.first}
-                />
-                <h1>
-                  {user.name.first} {user.name.last}
-                </h1>
-                <p>
-                  <strong>Email: </strong>
-                  {user.email}
-                </p>
-                <p>
-                  <strong>Teléfono: </strong>
-                  {user.phone}
-                </p>
-                <p>
-                  <strong>Genero: </strong>
-                  {user.gender}
-                </p>
-                <p>
-                  <strong>Edad: </strong>
-                  {user.dob.age}
-                </p>
-                <p>
-                  <strong>Pais: </strong>
-                  {user.location.country}
-                </p>
-              </div>
             </div>
 
-            <div className='message-section'>
-              <h2>Mensajes</h2>
+            <div className='content-scroll  screen-2-columns'>
               <div>
-                <textarea
-                  placeholder='Escribe un mensaje'
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                />
-                <div className='form-btn-container'>
-                  <button className='form-button' onClick={handleSendMessage}>Enviar</button>
+                <div className="detail-card">
+                  <img
+                    src={user.picture.large}
+                    alt={user.name.first}
+                  />
+                  <h1>
+                    {user.name.first} {user.name.last}
+                  </h1>
+                  <p>
+                    <strong>Email: </strong>
+                    {user.email}
+                  </p>
+                  <p>
+                    <strong>Teléfono: </strong>
+                    {user.phone}
+                  </p>
+                  <p>
+                    <strong>Genero: </strong>
+                    {user.gender}
+                  </p>
+                  <p>
+                    <strong>Edad: </strong>
+                    {user.dob.age}
+                  </p>
+                  <p>
+                    <strong>Pais: </strong>
+                    {user.location.country}
+                  </p>
+                </div>
+
+                <div className='message-section'>
+                  {boxMessages ?  (
+                    <>
+                      <h2>Mensajes</h2>
+                      <div>
+                        <textarea
+                          className='message-texbox'
+                          name='message'
+                          placeholder='Escribe un mensaje 🫰🏼'
+                          value={message}
+                          onChange={(e) => setMessage(e.target.value)}
+                        />
+                        <div className='form-btn-container'>
+                          <button className='form-button' onClick={handleSendMessage}>Enviar</button>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <button className='form-button' onClick={() => setBoxMessages(true)}>Dejar un mensaje 💬 </button>
+                  )
+                  }
                 </div>
               </div>
-            </div>
 
-            <div className='message-grid'>
-              {messages.length === 0 ?
-                (
-                  <p>No hay mensajes todavía 😣 </p>
-                ) : (
-                  messages.map((msg) => (
-                    <div
-                      key={msg.id}
-                      className='message-card'
-                    >
-                      <p>{msg.text}</p>
-                      <small>msg.createdAt</small>
-                    </div>
-                  ))
-                )
-              }
-            </div>
+              <div className='message-grid'>
+                {messages.length === 0 ?
+                  (
+                    <></>
+                  ) : (
+
+                    <>
+                      <h4 className='message-history-title'>Historial de mensajes</h4>
+                      {messages.map((msg) => {
+                        return (
+                          <div
+                            key={msg.id}
+                            className='message-card'
+                          >
+                            <p>{msg.text}</p>
+                            <small>{msg.createAt}</small>
+                          </div>
+                        )
+                      })}
+
+                    </>
+                  )
+                }
+              </div>
+
+              </div>
           </div>
 
           <Footer

@@ -117,6 +117,10 @@ button {
     overflow-x: hidden;
 }
 
+.screen-2-columns {
+    width: 100%;
+}
+
 /* LOGIN STYLES */
 
 .login-cont-form {
@@ -173,9 +177,27 @@ button {
     border: 1px solid var(--color-background-calendar-icon);
 }
 
+.login-btn-container {
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.login-forget-pass {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    padding: 10px 0px;
+    text-decoration: underline;
+    font-size: 12px;
+    color: var(--color-background-bell-icon);
+    margin: auto;
+}
+
 .form-btn-container {
     width: 100%;
     margin: 20px 0px;
+    display: flex;
+    gap: 5px;
 }
 
 .form-button {
@@ -220,13 +242,17 @@ button {
     background: linear-gradient(128deg, rgb(227 227 227) 38%, rgb(32 36 91 / 86%) 80%, rgb(211 229 217) 100%);
 }
 
-/* CARDS STYLES */
+/* Users STYLES */
 
 .user-card-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
+    border: 2px solid var(--color-background-bell-icon);
+    background: var(--color-background-blanco);
+    padding: 20px;
+    border-radius: 15px;
 }
 
 .users-container {
@@ -236,7 +262,7 @@ button {
 }
 
 .user-card {
-    background: transparent;
+    background: var(--color-background-blanco);
     border-radius: 10px;
     padding: 1rem;
     display: flex;
@@ -245,6 +271,7 @@ button {
     text-align: center;
     gap: 1rem;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    min-width: 250px;
 }
 
 .user-card img {
@@ -257,8 +284,10 @@ button {
     border: none;
     background: var(--color-background-negro);
     color: var(--color-background-blanco);
-    padding: 10px 20px;
+    padding: 10px 15px;
     border-radius: 5px;
+    font-size: 12px;
+    min-height: 35px;
 }
 
 .user-card-btn-container {
@@ -267,6 +296,27 @@ button {
     justify-content: space-around;
     width: 100%;
     gap: 15px;
+}
+
+.users-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.filters-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: linear-gradient(128deg, rgb(227 227 227) 38%, rgb(32 36 91 / 86%) 80%, rgb(211 229 217) 100%);
+    padding-bottom: 1rem;
+}
+
+.content-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 1rem;
 }
 
 /* Styles User detail */
@@ -311,6 +361,12 @@ button {
     align-items: center;
     margin-bottom: 1rem;
     gap: 20px;
+}
+
+.user-filters-animation {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
 }
 
 .user-filters button {
@@ -394,8 +450,11 @@ button {
 
 /* Styles Box Message */
 .message-section {
-    margin-top: 2rem;
+    margin: 20px auto;
+    max-width: 400px;
     width: 100%;
+    display: grid;
+    gap: 20px;
 }
 
 .message-form {
@@ -433,12 +492,16 @@ button {
     padding: 1rem;
     border-radius: 10px;
     text-align: left;
+    max-width: 400px;
+    width: 100%;
+    margin: auto;
 }
 
 .message-card small {
     display: block;
     margin-top: 10px;
     color: gray;
+    text-align: end;
 }
 
 .message-grid {
@@ -446,11 +509,28 @@ button {
     gap: 5px;
 }
 
+.message-texbox {
+    width: 100%;
+    height: 100px;
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 400px;
+}
+
+.message-history-title {
+    width: 100%;
+    max-width: 400px;
+    margin: 10px auto;
+    display: flex;
+    gap: 10px;
+}
+
 /* Styles User Table */
 .users-table-container {
     width: 100%;
     overflow-x: auto;
     overflow-y: auto;
+    /*  Hace el scroll dentro de la tabla */
     max-height: 70vh;
     border-radius: 16px;
     box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.1);
@@ -496,6 +576,15 @@ button {
     background: #f8f8f8;
 }
 
+.users-table tbody tr:hover
+.btn-delete-hover,
+.user-card:hover
+.btn-delete-hover {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
 .users-table img {
     width: 50px;
     height: 50px;
@@ -513,6 +602,23 @@ button {
     border-radius: 6px;
     background: var(--color-background-negro);
     color: var(--color-background-blanco);
+}
+
+.table-actions .btn-delete,
+.user-card .btn-delete {
+    border: none;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--color-background-calendar-icon);
+    border: 1px solid var(--color-background-calendar-icon);
+}
+
+.btn-delete-hover {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8);
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
 }
 
 .users-table th,
@@ -609,6 +715,12 @@ button {
     .user-filters {
         display: flex;
         justify-content: space-between;
+    }
+
+    .screen-2-columns {
+        display: flex;
+        align-items: self-start;
+        justify-content: space-around;
     }
 }
 

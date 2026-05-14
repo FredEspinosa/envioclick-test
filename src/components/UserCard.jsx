@@ -1,9 +1,11 @@
 import React from 'react'
+import { MdDeleteForever } from 'react-icons/md';
 import { useNavigate } from "react-router-dom";
 
 const UserCard = ({
     user,   //Data
-    onDelete    //Callback
+    onDelete,    //Callback
+    handleModalMessage
 }) => {
 
     const navigate = useNavigate();
@@ -27,10 +29,20 @@ const UserCard = ({
                 <button onClick={handleViewDetail}>
                     Ver detalles
                 </button>
-                <button onClick={() => {
-                    onDelete(user.login.uuid)
-                }}>
-                    Eliminar
+                <button
+                    className='btn-delete'
+                    type='button'
+                    onClick={() => handleModalMessage(user.login.uuid)}
+                >
+                    Enviar mensaje
+                </button>
+                <button 
+                    className='btn-delete btn-delete-hover'
+                    onClick={() => {
+                        onDelete(user.login.uuid)
+                    }}
+                >
+                        <MdDeleteForever size={20}/>
                 </button>
             </div>
         </div>

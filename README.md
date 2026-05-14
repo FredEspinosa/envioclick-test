@@ -1,16 +1,168 @@
-# React + Vite
+# Envioclick Frontend Technical Test
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación desarrollada con React + Vite para la prueba técnica frontend de Envioclick.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologías utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React JS
+- Vite
+- React Router DOM
+- Axios
+- CSS Vanilla (Mobile First)
+- LocalStorage
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# 📦 Instalación del proyecto
 
-## Expanding the ESLint configuration
+## 1. Clonar repositorio
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+git clone <URL_DEL_REPOSITORIO>
+```
+
+---
+
+## 2. Entrar al proyecto
+
+```bash
+cd envioclick-test
+```
+
+---
+
+## 3. Instalar dependencias
+
+Este proyecto utiliza `pnpm`.
+
+```bash
+pnpm install
+```
+
+---
+
+## 4. Ejecutar proyecto
+
+```bash
+pnpm dev
+```
+
+---
+
+## 5. Abrir en navegador
+
+```bash
+http://localhost:5173
+```
+
+---
+
+# 🔐 Credenciales de acceso
+
+```txt
+Usuario: admin
+Password: 1234
+```
+
+---
+
+# ✨ Funcionalidades implementadas
+
+## ✅ Login
+- Simulación de autenticación
+- Protección de rutas
+- Persistencia con LocalStorage
+
+---
+
+## ✅ Gestión de usuarios
+- Consumo de RandomUser API
+- Caché local para evitar llamadas innecesarias
+- Vista tipo cards y tabla
+- Diseño responsive mobile first
+
+---
+
+## ✅ Filtros dinámicos
+- Género
+- Nacionalidad
+- Edad
+
+---
+
+## ✅ Detalle de usuario
+- Información detallada
+- Historial de mensajes
+
+---
+
+## ✅ Historial de mensajes
+- Envío de mensajes
+- Persistencia con LocalStorage
+
+---
+
+## ✅ Exportación CSV
+- Descarga de usuarios filtrados
+
+---
+
+## ✅ Eliminación de usuarios
+- Modal de confirmación
+- Actualización dinámica de UI
+
+---
+
+# 📁 Arquitectura del proyecto
+
+```bash
+src/
+│
+├── api/
+├── components/
+├── pages/
+├── routes/
+├── services/
+├── styles/
+│
+├── App.jsx
+└── main.jsx
+```
+
+---
+
+# 🧠 Decisiones técnicas
+
+## Mobile First
+La interfaz fue desarrollada siguiendo enfoque mobile first para garantizar buena experiencia en dispositivos móviles y posteriormente escalar hacia desktop mediante media queries.
+
+---
+
+## Separación por responsabilidades
+El proyecto divide:
+- lógica HTTP
+- servicios
+- componentes
+- páginas
+
+para mejorar mantenibilidad y escalabilidad.
+
+---
+
+## Cache local
+Se implementó cache usando `localStorage` para optimizar rendimiento y evitar llamadas innecesarias a la API.
+
+---
+
+# 🌎 API utilizada
+
+Random User API
+
+https://randomuser.me/
+
+---
+
+# 👨‍💻 Autor
+
+Desarrollado por:
+Luis Alfredo Espinosa Caballero

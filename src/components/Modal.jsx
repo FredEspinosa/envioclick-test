@@ -5,6 +5,7 @@ const Modal = ({
     message,
     onConfirm,
     onCancel,
+    hideButtons = false,
 }) => {
 
   return (
@@ -13,7 +14,7 @@ const Modal = ({
             <div className='modal-content'>
                 <h2>{title}</h2>
                 <p>{message}</p>
-
+            {!hideButtons &&
                 <div className='modal-buttons'>
                     <div className='form-btn-container'>
                         <button className='form-button' onClick={onConfirm}>Confirmar</button>
@@ -22,6 +23,7 @@ const Modal = ({
                         <button className='form-button' onClick={onCancel}>Cancelar</button>
                     </div>
                 </div>
+            }
             </div>
         </div>
     </>

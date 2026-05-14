@@ -1,9 +1,11 @@
 import React from 'react'
+import { MdDeleteForever } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 
 const UserTable = ({
     users,   //Data
-    onDelete    //Callback
+    onDelete,    //Callback
+    handleModalMessage,
 }) => {
 
     const navigate = useNavigate();
@@ -64,9 +66,17 @@ const UserTable = ({
                                         </button>
 
                                         <button
+                                        className='btn-delete'
+                                        type='button'
+                                            onClick={() => handleModalMessage (user.login.uuid)}
+                                        >
+                                            Enviar mensaje
+                                        </button>
+                                        <button
+                                            className='btn-delete btn-delete-hover'
                                             onClick={() => onDelete(user.login.uuid)}
                                         >
-                                            Borrar
+                                            <MdDeleteForever size={25}/>
                                         </button>
                                     </div>
                                 </td>
